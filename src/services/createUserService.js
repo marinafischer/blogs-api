@@ -1,6 +1,6 @@
-const jwt = require('jsonwebtoken');
 const Joi = require('joi');
 const { User } = require('../database/models');
+const getToken = require('../helpers/getToken');
 
 const USER = Joi.object({
   displayName: Joi.string().min(8).required(),
@@ -9,15 +9,6 @@ const USER = Joi.object({
   password: Joi.string().min(6).required(),
   image: Joi.string().required(),
 });
-
-const getToken = (data) => {
-  const secret = process.env.JWT_SECRET;
-  const jwtConfig = {
-    expiresIn: '1h',
-    algorithm: 'HS256',
-  };
-  return jwt.sign({ data }, secret, jwtConfig);
-};
 
 module.exports = async (user) => {
   const { error } = USER.validate(user);
