@@ -8,7 +8,6 @@ module.exports = async ({ email, password }) => {
 
   const getUser = await User.findOne({ where: { email } });
   if (!getUser || getUser.password !== password) {
-    console.log('entrou no erro');
     return { statusCode: 400, message: 'Invalid fields' };
   }
   
