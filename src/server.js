@@ -12,9 +12,12 @@ app.get('/', (_request, response) => {
 });
 
 app.post('/login', routes.login);
+
 app.post('/user', routes.user);
 app.get('/user/:id', middleware.authentication, routes.getUserById);
 app.get('/user', middleware.authentication, routes.getUser);
+
+app.post('/categories', middleware.authentication, routes.category);
 
 app.use(middleware.error);
 
