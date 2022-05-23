@@ -1,9 +1,11 @@
+const login = require('../services/loginService');
+
 module.exports = async (req, res, next) => {
-  const { email, password } = req.body;
-  if (!email || !password) {
-    return next(
-      { statusCode: 400, message: 'Some required fields are missing' },
-    ); 
+  try {
+    const token = await login(req.body);
+    if (token.statusCode) next(token);
+    return res.status(200).json(token);
+  } catch (error) {
+    next(error);
   }
-  res.status(200).send('entrei');
 };
