@@ -10,7 +10,6 @@ const Category = (sequelize, DataTypes) => {
   {
     timestamps: false,
   });
-
   return Category;
 };
 
