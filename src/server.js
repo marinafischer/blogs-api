@@ -13,6 +13,7 @@ app.get('/', (_request, response) => {
 
 app.post('/login', routes.login);
 app.post('/user', routes.user);
+app.get('/user', middleware.authentication, routes.getUser);
 
 app.use(middleware.error);
 
