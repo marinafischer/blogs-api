@@ -18,6 +18,7 @@ app.get('/user/:id', middleware.authentication, routes.getUserById);
 app.get('/user', middleware.authentication, routes.getUser);
 
 app.post('/categories', middleware.authentication, routes.category);
+app.get('/categories', middleware.authentication, routes.getCategories);
 
 app.use(middleware.error);
 
