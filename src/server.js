@@ -20,6 +20,8 @@ app.get('/user', middleware.authentication, routes.getUser);
 app.post('/categories', middleware.authentication, routes.category);
 app.get('/categories', middleware.authentication, routes.getCategories);
 
+app.post('/post', middleware.authentication, routes.createPost);
+
 app.use(middleware.error);
 
 app.listen(port, () => console.log('ouvindo porta', port));
