@@ -7,6 +7,7 @@ const getCategories = require('./controllers/getCategories');
 const createPost = require('./controllers/createPost');
 const getPost = require('./controllers/getPost');
 const getPosts = require('./controllers/getPosts');
+const editPost = require('./controllers/editPost');
 
 module.exports = {
   login,
@@ -18,4 +19,5 @@ module.exports = {
   createPost,
   getPost,
   getPosts,
+  editPost,
 };
