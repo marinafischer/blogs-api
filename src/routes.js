@@ -8,6 +8,7 @@ const createPost = require('./controllers/createPost');
 const getPost = require('./controllers/getPost');
 const getPosts = require('./controllers/getPosts');
 const editPost = require('./controllers/editPost');
+const deletePost = require('./controllers/deletePost');
 
 module.exports = {
   login,
@@ -20,4 +21,5 @@ module.exports = {
   getPost,
   getPosts,
   editPost,
+  deletePost,
 };

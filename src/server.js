@@ -27,6 +27,10 @@ app.put('/post/:id',
   middleware.authentication,
   middleware.authorAuth,
   routes.editPost);
+app.delete('/post/:id', 
+middleware.authentication,
+middleware.authorAuth,
+routes.deletePost);
 
 app.use(middleware.error);
 
