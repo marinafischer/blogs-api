@@ -22,6 +22,7 @@ app.get('/categories', middleware.authentication, routes.getCategories);
 
 app.post('/post', middleware.authentication, routes.createPost);
 app.get('/post', middleware.authentication, routes.getPosts);
+app.get('/post/search', middleware.authentication, routes.searchPost);
 app.get('/post/:id', middleware.authentication, routes.getPost);
 app.put('/post/:id', 
   middleware.authentication,
