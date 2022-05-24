@@ -32,6 +32,10 @@ middleware.authentication,
 middleware.authorAuth,
 routes.deletePost);
 
+app.delete('/user/me', 
+middleware.authentication,
+routes.deleteUser);
+
 app.use(middleware.error);
 
 app.listen(port, () => console.log('ouvindo porta', port));
