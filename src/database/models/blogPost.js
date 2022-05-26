@@ -1,5 +1,3 @@
-const { date } = require('joi');
-
 const BlogPost = (sequelize, DataTypes) => {
   const BlogPost = sequelize.define("BlogPost", {
     id: {
@@ -15,12 +13,11 @@ const BlogPost = (sequelize, DataTypes) => {
   }, 
   {
     timestamps: false,
-  }
-  );
+  });
   BlogPost.associate=(models)=>{
     BlogPost.belongsTo(models.User,
       {
-        foreingKey: 'userId',
+        foreignKey: 'userId',
         as: 'user'
       }
     );

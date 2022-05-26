@@ -1,7 +1,8 @@
 require('dotenv').config();
 const app = require('./api');
-const routes = require('./routes');
+const controller = require('./controllers');
 const middleware = require('./middlewares');
+const router = require('./routes');
 
 // não remova a variável `API_PORT` ou o `listen`
 const port = process.env.API_PORT || 3000;
@@ -11,31 +12,9 @@ app.get('/', (_request, response) => {
   response.send();
 });
 
-app.post('/login', routes.login);
+app.post('/login', controller.login);
 
-app.post('/user', routes.user);
-app.get('/user/:id', middleware.authentication, routes.getUserById);
-app.get('/user', middleware.authentication, routes.getUser);
-
-app.post('/categories', middleware.authentication, routes.category);
-app.get('/categories', middleware.authentication, routes.getCategories);
-
-app.post('/post', middleware.authentication, routes.createPost);
-app.get('/post', middleware.authentication, routes.getPosts);
-app.get('/post/search', middleware.authentication, routes.searchPost);
-app.get('/post/:id', middleware.authentication, routes.getPost);
-app.put('/post/:id', 
-  middleware.authentication,
-  middleware.authorAuth,
-  routes.editPost);
-app.delete('/post/:id', 
-middleware.authentication,
-middleware.authorAuth,
-routes.deletePost);
-
-app.delete('/user/me', 
-middleware.authentication,
-routes.deleteUser);
+app.use(router);
 
 app.use(middleware.error);
 
