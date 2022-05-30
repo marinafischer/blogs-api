@@ -12,7 +12,7 @@ app.get('/', (_request, response) => {
   response.send();
 });
 
-app.post('/login', controller.login);
+app.post('/login', middleware.loginMiddleware, controller.login);
 
 app.use(router);
 

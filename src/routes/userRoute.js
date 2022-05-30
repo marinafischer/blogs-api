@@ -4,7 +4,7 @@ const middleware = require('../middlewares');
 
 const userRouter = express.Router();
 
-userRouter.post('/', controller.user);
+userRouter.post('/', middleware.userMiddleware, controller.user);
 userRouter.get('/:id', middleware.authentication, controller.getUserById);
 userRouter.get('/', middleware.authentication, controller.getUser);
 userRouter.delete('/me', 

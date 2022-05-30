@@ -4,7 +4,8 @@ const middleware = require('../middlewares');
 
 const categoriesRouter = express.Router();
 
-categoriesRouter.post('/', middleware.authentication, controller.category);
+categoriesRouter.post('/', 
+  middleware.authentication, middleware.categoryMiddleware, controller.category);
 categoriesRouter.get('/', middleware.authentication, controller.getCategories);
 
 module.exports = categoriesRouter;
