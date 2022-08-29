@@ -1,51 +1,50 @@
-# Sobre o projeto API de Blogs!
+# About the Blogs API project!
 
-Projeto feito durante o curso de desenvolvimento web da Trybe.
+Project made during the Trybe web development course.
 
-Foi desenvolvida uma API e um banco de dados para a produção de conteúdo para um blog! 
+The application is the creation of an API and a database for the production of content for a blog! The construction was made following the REST API standard, and with it it is possible to make a CRUD (**C**reate, **R**ead, **U**pdate and **D**elete).
 
-A construção foi feita seguindo o padrão REST API, e com ela é possível fazer um CRUD (**C**reate, **R**ead, **U**pdate e **D**elete).
+## Technologies:
 
-## Tecnologias usadas: 
   - Node JS;
   - Express;
-  - Banco de dados MySQL;
+  - MySQL database;
   - ORM: sequelize;
-  - biblioteca de validações: Joi;
-  - biblioteca para token: JWT;
+  - validation library: Joi;
+  - library for token: JWT;
 
-## Para começar:
+## To get start:
 
-- Clone o repositório: git@github.com:marinafischer/blogs-api.git
+  - Clone the repository: git@github.com:marinafischer/blogs-api.git
 
-- Para iniciar com node:
-  - Instale as dependencias: npm install
-  - Crie o aquivo .env na raiz do projeto com as variáveis do banco e senha para o jwt
-  - Crie o banco e popule: npm run prestart
-  - Inicie a aplicação: npm start
+  - To start with node:
+  - Install dependencies: npm install
+  - Create the .env file in the project root with the bank variables and password for jwt
+  - Create the bank and populate: npm run prestat
+  - Start the application: npm start
 
-- Para iniciar com docker:
-  - Rode o comando: docker-compose up -d --build
-  - Rode o comando: docker exec -it blogs_api bash
-    Esse comando dará acesso ao terminal do container, a partir daqui é possível rodar os mesmos comandos usados com o node (descritos acima);
+  - To start with docker:
+  - Run the command: docker-compose up -d --build
+  - Run the command: docker exec -it blogs_api bash
+    This command will give access to the container terminal, from here it is possible to run the same commands used with node (described above);
 
 # Endpoints:
 
 ## POST `/login`
-- O endpoint realiza o login (de um usuário já cadastrado no banco) e gera um token de acesso;
-- O corpo da requisição deve seguir o formato abaixo:
+- The endpoint logs in (a user already registered in the bank) and generates an access token;
+- The request body must follow the format below:
   ```json
   {
     "email": "lewishamilton@gmail.com",
     "password": "123456"
   }
   ```
-- Caso algum dado esteja incorreto, é retornado o status 400 e uma mensagem de erro;
-- Quando o login ocorrer com sucesso é retornado o status 201 e um token de acesso;
+- If any data is incorrect, status 400 and an error message are returned;
+- When the login is successful, the status 201 and an access token are returned;
 
 ## POST `/user`
-- O endpoint adiciona um novo `user` ao banco de dados e gera um token de acesso;
-- O corpo da requisição segue o formato abaixo:
+- The endpoint adds a new `user` to the database and generates an access token;
+- The request body follows the format below:
   ```json
   {
     "displayName": "Brett Wiltshire",
@@ -54,37 +53,37 @@ A construção foi feita seguindo o padrão REST API, e com ela é possível faz
     "image": "http://4.bp.blogspot.com/_YA50adQ-7vQ/S1gfR_6ufpI/AAAAAAAAAAk/1ErJGgRWZDg/S45/brett.png"
   }
   ```
-- Caso algum dado esteja incorreto, é retornado o status 400 e uma mensagem de erro;
-- Quando o login ocorrer com sucesso é retornado o status 200 e um token de acesso;
-
+- If any data is incorrect, status 400 and an error message are returned;
+- When the login is successful, the status 200 and an access token are returned;
+- 
 ## GET `/user`
-- O endpoint consulta o banco de dados e retorna todos usuários;
-- Para realizar a requisição é necessário enviar um token válido pelo cabeçalho da requisição pela chave Authorization.
+- The endpoint queries the database and returns all users;
+- To perform the request it is necessary to send a valid token through the request header by the Authorization key.
 
 ## GET `/user/:id`
-- O endpoint consulta o banco de dados e retorna o usuário especificado;
-- Para realizar a requisição é necessário enviar um token válido pelo cabeçalho da requisição pela chave Authorization.
+- The endpoint queries the database and returns the specified user;
+- To perform the request it is necessary to send a valid token through the request header by the Authorization key.
 
 ## POST `/categories`
-- O endpoint adiciona uma nova `category` ao banco de dados;
-- Para realizar a requisição é necessário enviar um token válido pelo cabeçalho da requisição pela chave Authorization;
-- O corpo da requisição deve seguir o formato abaixo:
+- The endpoint adds a new `category` to the database;
+- To perform the request it is necessary to send a valid token through the request header by the Authorization key;
+- The request body must follow the format below:
   ```json
   {
     "name": "Typescript"
   }
   ```
-- Caso algum dado esteja incorreto, é retornado o status 400 e uma mensagem de erro;
-- Quando o login ocorrer com sucesso é retornado o status 201 e os dados recem criados;
+- If any data is incorrect, status 400 and an error message are returned;
+- When the login is successful, the status 201 is returned and the newly created data;
 
 ## GET `/categories`
-- O endpoint consulta o banco de dados e retorna todas categorias;
-- Para realizar a requisição é necessário enviar um token válido pelo cabeçalho da requisição pela chave Authorization;
+- The endpoint queries the database and returns all categories;
+- To perform the request it is necessary to send a valid token through the request header by the Authorization key;
 
 ## POST `/post`
-- O endpoint adiciona um novo `post` ao banco de dados;
-- Para realizar a requisição é necessário enviar um token válido pelo cabeçalho da requisição pela chave Authorization;
-- O corpo da requisição deve seguir o formato abaixo:
+- The endpoint adds a new `post` to the database;
+- To perform the request it is necessary to send a valid token through the request header by the Authorization key;
+- The request body must follow the format below:
   ```json
   {
     "title": "Latest updates, August 1st",
@@ -92,38 +91,38 @@ A construção foi feita seguindo o padrão REST API, e com ela é possível faz
     "categoryIds": [1, 2]
   }
   ```
-- Caso algum dado esteja incorreto, é retornado o status 400 e uma mensagem de erro;
-- Quando o dado for inserido é retornado o status 201 e os dados recem criados;
+- If any data is incorrect, status 400 and an error message are returned;
+- When the data is inserted, the status 201 is returned and the newly created data;
 
 ## GET `/post`
-- O endpoint consulta o banco de dados e retorna todos posts da pessoa usuária;
-- Para realizar a requisição é necessário enviar um token válido pelo cabeçalho da requisição pela chave Authorization;
+- The endpoint queries the database and returns all posts from the user;
+- To perform the request it is necessary to send a valid token through the request header by the Authorization key;
 
 ## GET `/post/:id`
-- O endpoint consulta o banco de dados e retorna o post especificado na requisição;
-- Para realizar a requisição é necessário enviar um token válido pelo cabeçalho da requisição pela chave Authorization;
+- The endpoint queries the database and returns the post specified in the request;
+- To perform the request it is necessary to send a valid token through the request header by the Authorization key;
 
 ## PUT `/post/:id`
-- O endpoint atualiza o banco de dados caso a pessoa usuária seja a dona do post;
-- Para realizar a requisição é necessário enviar um token válido pelo cabeçalho da requisição pela chave Authorization;
-- O corpo da requisição deve seguir o formato abaixo:
+- The endpoint updates the database if the user is the owner of the post;
+- To perform the request it is necessary to send a valid token through the request header by the Authorization key;
+- The request body must follow the format below:
   ```json
   {
     "title": "Latest updates, August 1st",
     "content": "The whole text for the blog post goes here in this key"
   }
   ```
-- Caso algum dado esteja incorreto, é retornado o status 400 e uma mensagem de erro;
-- Quando o dado for atualizado é retornado o status 201 e os dados atualizados;
+- If any data is incorrect, status 400 and an error message are returned;
+- When the data is updated, the status 201 is returned and the updated data;
 
 ## DELETE `/post/:id`
-- O endpoint delete um dado do banco de dados caso a pessoa usuária seja a dona do post;
-- Para realizar a requisição é necessário enviar um token válido pelo cabeçalho da requisição pela chave Authorization;
+- The endpoint deletes data from the database if the user is the owner of the post;
+- To perform the request it is necessary to send a valid token through the request header by the Authorization key;
 
 ## DELETE `/user/me`
-- O endpoint delete o usuário do banco de dados caso a pessoa usuária seja a mesma logada;
-- Para realizar a requisição é necessário enviar um token válido pelo cabeçalho da requisição pela chave Authorization;
+- The endpoint deletes the user from the database if the user is the same person logged in;
+- To perform the request it is necessary to send a valid token through the request header by the Authorization key;
 
 ## GET `/post/search?q=:searchTerm`
-- O endpoint consulta o banco de dados e retorna os posts filtrados na requisição;
-- Para realizar a requisição é necessário enviar um token válido pelo cabeçalho da requisição pela chave Authorization;
+- The endpoint queries the database and returns the filtered posts in the request;
+- To perform the request it is necessary to send a valid token through the request header by the Authorization key;
